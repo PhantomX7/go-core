@@ -93,6 +93,6 @@ func (cv *cValidator) Exist() validator.Func {
 		return cv.db.Table(arr[0]).
 			Select("*").
 			Where(arr[1]+" = ?", fl.Field().Interface()).
-			First(&struct{}{}).Error != gorm.ErrRecordNotFound
+			Take(&struct{}{}).Error != gorm.ErrRecordNotFound
 	}
 }
