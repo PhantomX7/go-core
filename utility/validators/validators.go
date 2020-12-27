@@ -24,7 +24,7 @@ func NewValidator(db *gorm.DB) {
 func (cv *cValidator) Unique() validator.Func {
 	return func(fl validator.FieldLevel) bool {
 		arr := strings.Split(fl.Param(), ".")
-		rows, err := cv.db.Table(arr[0]).Select("*").Where(arr[1]+" = ?", fl.Field().Interface()).Rows()
+		rows, err := cv.db.Table(arr[0]).Select("*").Where("`"+arr[1]+"` = ?", fl.Field().Interface()).Rows()
 		if err != nil {
 			return false
 		}
