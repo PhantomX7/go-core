@@ -86,3 +86,17 @@ func WhereIsNotNullScope(key string) Scope {
 		return db.Where(fmt.Sprintf("%s IS NOT NULL", key))
 	}
 }
+
+// WhereIsNotNull will return a scope with not null value for given key
+func JoinScope(key string) Scope {
+	return func(db *gorm.DB) *gorm.DB {
+		return db.Joins(key)
+	}
+}
+
+// WhereIsNotNull will return a scope with not null value for given key
+func PreloadScope(key string) Scope {
+	return func(db *gorm.DB) *gorm.DB {
+		return db.Preload(key)
+	}
+}
