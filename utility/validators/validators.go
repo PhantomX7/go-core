@@ -92,7 +92,7 @@ func (cv *cValidator) Exist() validator.Func {
 		arr := strings.Split(fl.Param(), ".")
 		return cv.db.Table(arr[0]).
 			Select("*").
-			Where(arr[1]+" = ?", fl.Field().Interface()).
+			Where("`"+arr[1]+"` = ?", fl.Field().Interface()).
 			Take(&struct{}{}).Error != gorm.ErrRecordNotFound
 	}
 }
