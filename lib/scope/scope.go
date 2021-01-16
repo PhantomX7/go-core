@@ -33,7 +33,7 @@ func OrderScope(order string) Scope {
 // the argument must be slice of something
 func WhereNotInScope(key string, value interface{}) Scope {
 	return func(db *gorm.DB) *gorm.DB {
-		return db.Where(fmt.Sprintf("%s NOT IN ?", key), value)
+		return db.Where(fmt.Sprintf("`%s` NOT IN ?", key), value)
 	}
 }
 
@@ -41,49 +41,49 @@ func WhereNotInScope(key string, value interface{}) Scope {
 // the argument must be slice of something
 func WhereInScope(key string, value interface{}) Scope {
 	return func(db *gorm.DB) *gorm.DB {
-		return db.Where(fmt.Sprintf("%s IN ?", key), value)
+		return db.Where(fmt.Sprintf("`%s` IN ?", key), value)
 	}
 }
 
 // WhereIsScope will return a scope with = condition
 func WhereIsScope(key string, value interface{}) Scope {
 	return func(db *gorm.DB) *gorm.DB {
-		return db.Where(fmt.Sprintf("%s = ?", key), value)
+		return db.Where(fmt.Sprintf("`%s` = ?", key), value)
 	}
 }
 
 // WhereIsNotScope will return a scope with <> condition
 func WhereIsNotScope(key string, value interface{}) Scope {
 	return func(db *gorm.DB) *gorm.DB {
-		return db.Where(fmt.Sprintf("%s <> ?", key), value)
+		return db.Where(fmt.Sprintf("`%s` <> ?", key), value)
 	}
 }
 
 // WhereIsScope will return a scope with = condition
 func WhereLikeScope(key string, value string) Scope {
 	return func(db *gorm.DB) *gorm.DB {
-		return db.Where(fmt.Sprintf("%s LIKE ?", key), "%"+value+"%")
+		return db.Where(fmt.Sprintf("`%s` LIKE ?", key), "%"+value+"%")
 	}
 }
 
 // WhereBetweenScope will return a scope with BETWEEN value1 AND value2 condition
 func WhereBetweenScope(key string, value1 interface{}, value2 interface{}) Scope {
 	return func(db *gorm.DB) *gorm.DB {
-		return db.Where(fmt.Sprintf("%s BETWEEN ? AND ?", key), value1, value2)
+		return db.Where(fmt.Sprintf("`%s` BETWEEN ? AND ?", key), value1, value2)
 	}
 }
 
 // WhereIsNull will return a scope with null value for given key
 func WhereIsNullScope(key string) Scope {
 	return func(db *gorm.DB) *gorm.DB {
-		return db.Where(fmt.Sprintf("%s IS NULL", key))
+		return db.Where(fmt.Sprintf("`%s` IS NULL", key))
 	}
 }
 
 // WhereIsNotNull will return a scope with not null value for given key
 func WhereIsNotNullScope(key string) Scope {
 	return func(db *gorm.DB) *gorm.DB {
-		return db.Where(fmt.Sprintf("%s IS NOT NULL", key))
+		return db.Where(fmt.Sprintf("`%s` IS NOT NULL", key))
 	}
 }
 
