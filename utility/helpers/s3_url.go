@@ -9,7 +9,7 @@ import (
 
 // can pass a single url or comma seperated url
 // generate s3 object url
-func GenerateS3Url(path string) string {
+func GenerateS3Url(path string, bucket string) string {
 	urls := strings.Split(path, ",")
 	for i := range urls {
 		if urls[i] == "" {
