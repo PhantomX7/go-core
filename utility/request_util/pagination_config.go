@@ -76,7 +76,7 @@ func (p *Pagination) MetaScopes() []scope.Scope {
 
 // NewPaginationConfig will create new Pagination with limit, offset, order and any scopes
 // will set query map to nil
-func NewPaginationConfig(limit int, offset int, order string, scopes ...scope.Scope) PaginationConfig {
+func NewPaginationConfig(limit int, offset int, order string, queryMap map[string][]string, scopes ...scope.Scope) PaginationConfig {
 	paginationConfig := Pagination{
 		limit:      limit,
 		offset:     offset,
@@ -111,7 +111,7 @@ func NewRequestPaginationConfig(conditions map[string][]string, filterable map[s
 
 // NewDefaultPaginationConfig will create a default Pagination with zero scope and 20 limit
 func NewDefaultPaginationConfig() PaginationConfig {
-	return NewPaginationConfig(20, 0, "")
+	return NewPaginationConfig(20, 0, "", nil)
 }
 
 // BuildLimit build the limit with 100 threshold given the conditions
