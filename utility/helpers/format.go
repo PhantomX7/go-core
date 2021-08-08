@@ -7,5 +7,5 @@ import (
 
 func FormatFloatNumber(value interface{}) string {
 	p := message.NewPrinter(language.Indonesian)
-	return p.Sprintf("%.2f", value)
+	return p.Sprintf("%.2d", value)
 }
