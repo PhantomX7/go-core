@@ -76,7 +76,7 @@ func (p *Pagination) MetaScopes() []scope.Scope {
 
 // NewPaginationConfig will create new Pagination with limit, offset, order and any scopes
 // will set query map to nil
-func NewPaginationConfig(limit int, offset int, order string, queryMap map[string][]string, scopes ...scope.Scope) PaginationConfig {
+func NewPaginationConfig(limit int, offset int, order string, scopes ...scope.Scope) PaginationConfig {
 	paginationConfig := Pagination{
 		limit:      limit,
 		offset:     offset,
